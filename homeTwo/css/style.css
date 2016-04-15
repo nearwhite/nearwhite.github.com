@@ -12,7 +12,7 @@ img{box-sizing: border-box;vertical-align: middle;border: 0;}
 .top_position{position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;z-index: 1;text-align: center;height: 275px;line-height: 275px;width: 500px;}
 .top_logo{width: 100%;height: 100%;}
 .top_logo_txt{position: absolute;top: 0px;left: 0px;width: 100%;text-align: center;color: #fff;font-size: 4rem;font-family: "PMingLiU";}
-.column_title{width: 100%;text-align: center;margin: 147px auto 104px auto;}
+.column_title{width: 100%;text-align: center;margin: 50px auto 104px auto;}
 .c_t_title{font-size: 25px;margin-bottom: 35px;}
 .c_t_txt{font-size: 16px;margin-top: 25px;color: #C0C0C0;}
 .cplumn_one{position: relative;width: 1000px;margin: auto;}

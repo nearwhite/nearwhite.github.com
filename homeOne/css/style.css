@@ -1,4 +1,4 @@
-*{font-family: "microsoft yahei";}
+*{font-family: "microsoft yahei";text-align:justify; text-justify:inter-ideograph;}
 html,
 body{height: 100%;margin: 0 auto;background-color: #fff;}
 img{box-sizing: border-box;vertical-align: middle;border: 0;}
@@ -10,7 +10,7 @@ img{box-sizing: border-box;vertical-align: middle;border: 0;}
 .top > .top_title{position: absolute;top: 160px;left: 50%;margin-left: -225px;z-index: 101;text-align: center;border: 2px solid #cfba7a;width: 450px;height: 50px;}
 .top > .top_title .border_hei{width: 180px;height: 2px;background-color: #000;position: absolute;top: 50px;right: 0;}
 .top > .top_title .top_title_1{padding-right: 30px;color: #a9a7a3;font-size: 32px;line-height: 50px;}
-.top > .top_title .top_title_2{position: absolute;top: 52px;left: 50%;margin-left: -275px;z-index: 101;text-align: center;border: 2px solid #cfba7a;border-top: none;border-left: none;width: 500px;height: 60px;}
+.top > .top_title .top_title_2{position: absolute;top: 52px;left: 50%;margin-left: -275px;z-index: 101;text-align: center;border: 2px solid #cfba7a;border-top: none;border-left: none;width: 500px;height: 65px;}
 .top > .top_title .top_title_2_left{float: left;color: #fff;text-align: right;font-size: 43px;line-height: 60px;height: 60px;width: 350px;}
 .top > .top_title .top_title_2_right{float: right;width: 150px;text-align: center;padding-top: 10px;}
 .top > .top_title .top_title_2_right > p{margin: 0;padding: 0;color: #fff;font-size: 20px;height: 20px;}
@@ -20,6 +20,7 @@ img{box-sizing: border-box;vertical-align: middle;border: 0;}
 .banner_1 .banner_1_img{display: inline-block;position: relative;width: 997px;height: 637px;}
 .banner_1 .banner_1_books{position: absolute;top: 228px;left: 205px;margin: auto;width: 764px;}
 .banner_1 .banner_1_books img{width: 100%;}
+.banner_1 .banner_1_books .b_1_b_txt{position: absolute;top: 140px;left: 55px;width: 300px;height: 370px;font-size: 13.6px;color: #988D8D;}
 /* 第二栏*/
 .banner_2{height: 990px;position: relative;}
 .banner_2 .banner_2_left{float: left;width: 60%;height: 100%;position: relative;}
@@ -76,5 +77,7 @@ img{box-sizing: border-box;vertical-align: middle;border: 0;}
 /* 第七栏*/
 .banner_7{background: url(../img/bottom.jpg) no-repeat center center;height: 280px;}
 .banner_7_cente{text-align: center;width: 1000px;height: 100%;margin: auto;}
-.banner_7_cente h1.title{color: #696969;text-align: center;}
+.banner_7_cente h1.title{color: #696969;}
+.banner_7_cente h1,.banner_7_cente p{text-align: center;}
+.banner_7_cente p{font-size: 18px;}
 .banner_7_cente p a{text-decoration: none;background-color: transparent;color: #000;font-size: 18px;}

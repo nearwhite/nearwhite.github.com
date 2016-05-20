@@ -1,28 +1,25 @@
 /*入口脚本*/
 require.config({
-	paths: { // -- 配置别名
-		//"amazeui": "http://cdn.amazeui.org/amazeui/2.6.2/js/amazeui.min", // 妹子Ui
-		//"jquery": "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min",
-		"jquery": "plugs/jquery.min",
-		"amazeui": "plugs/amazeui.min",
-		"Vue": "plugs/vue.min",
-		"lazyload": "plugs/jquery.lazyload.min",
+	paths: {
+		"amazeui": "http://cdn.amazeui.org/amazeui/2.6.2/js/amazeui.min",
+		"jquery": "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min",
+		"Vue": "http://apps.bdimg.com/libs/vue/1.0.14/vue",
+		"lazyload": "http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload",
 		"swiper": "plugs/swiper-3.3.1.jquery.min",
-		"cityselect" : "plugs/jquery.cityselect",
+		"cityselect": "plugs/jquery.cityselect",
 		"gsJsPlugs": "gsJsPlugs",
-		"loadImage": "plugs/jquery.loadImage",
 		"details": "details",
-		"cart" : "cart"
+		"cart": "cart"
 	}
 });
 require(["jquery", "amazeui"], function($) {
 	$(function() {
-		if(typeof requireJs == "string"){
+		if (typeof requireJs == "string") {
 			homeInit();
-		}else if (typeof(requireJs) == "object") {
+		} else if (typeof(requireJs) == "object") {
 			require(requireJs);
 		}
-		
+
 	});
 
 	// 首页初始化
@@ -44,19 +41,15 @@ require(["jquery", "amazeui"], function($) {
 				}, 300);
 			});
 		}
-		
+
 		// 获取购物车数据
 		var nwFooter = $("#nw-footer");
 		var nwStoreVal = $.AMUI.store.get("nw_store");
-		if(nwStoreVal){
-			if(nwStoreVal.cartNumber > 0){
+		if (nwStoreVal) {
+			if (nwStoreVal.cartNumber > 0) {
 				nwFooter.find("div.footer-shopping-basket").addClass("have").children("span.basket-icon").text(nwStoreVal.cartNumber);
 			}
 		}
-		
-//		var bodyElm = document.getElementsByTagName("body")[0];
-//		// 去除loading框
-//		bodyElm.classList.remove("loading");
-//		$("#nw-home-loading,#nprogress").remove();
+
 	}
 });

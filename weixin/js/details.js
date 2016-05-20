@@ -55,57 +55,44 @@
 
 	// 如果没有数据就去读取数据
 	if (!nw.cdata) {
-		/*$.ajax({
-			type: "get",
-			data: nw.id,
-			url: "../js/data/details.json",
-			async: false,
-			success: function(data) {
-				nw.cdata = data;
-				nw.cdata.id = nw.id;
-				nw.cdata.buttonTitle = nw.cdata.sizes[0].sizeTitle;
-			}
-		});*/
 		nw.cdata = {
-			"id": nw.id,
-			"totalNumber": 0,
-			"totalPrice": "0",
-			"sizes": [{
-				"number": 0,
-				"sizeProvisionalNumber": 0,
-				"storeNumber": 2,
-				"sizeTitle": "XS(160/80A)",
-				"totalPrice": "0.00"
-			}, {
-				"number": 0,
-				"sizeProvisionalNumber": 0,
-				"storeNumber": 3,
-				"sizeTitle": "S (165/84A)",
-				"totalPrice": "0.00"
-			}, {
-				"number": 0,
-				"sizeProvisionalNumber": 0,
-				"storeNumber": 4,
-				"sizeTitle": "M (170/88A)",
-				"totalPrice": "0.00"
-			}, {
-				"number": 0,
-				"sizeProvisionalNumber": 0,
-				"storeNumber": 5,
-				"sizeTitle": "L (175/96A)",
-				"totalPrice": "0.00"
-			}],
-			"imgs": [
-				"img/img1.jpg",
-				"img/img2.jpg",
-				"img/img3.jpg",
-				"img/img4.jpg",
-				"img/img5.jpg"
-			],
-			"buttonTitle": "XS(160/80A)",
-			"price": "100.00",
-			"title": "白衬衫限量版"
+		    "id": "1",
+		    "sizes": [
+		        {
+		            "storeNumber": 2,
+		            "sizeTitle": "XS(160/80A)"
+		        },
+		        {
+		            "storeNumber": 3,
+		            "sizeTitle": "S (165/84A)"
+		        },
+		        {
+		            "storeNumber": 4,
+		            "sizeTitle": "M (170/88A)"
+		        },
+		        {
+		            "storeNumber": 5,
+		            "sizeTitle": "L (175/96A)"
+		        }
+		    ],
+		    "imgs": [
+		        "img/img1.jpg",
+		        "img/img2.jpg",
+		        "img/img3.jpg",
+		        "img/img4.jpg",
+		        "img/img5.jpg"
+		    ],
+		    "price": "100.00",
+		    "title": "白衬衫限量版"
 		}
+		nw.cdata.id = nw.id;
+		nw.cdata.totalNumber = nw.cdata.totalNumber = 0;
+		for(var i=0,j=nw.cdata.sizes.length; i < j;i++){
+			var size = nw.cdata.sizes[i];
+			size.number = size.sizeProvisionalNumber = 0;
+			size.totalPrice = "0.00";
+		}
+		nw.cdata.buttonTitle = nw.cdata.sizes[0].sizeTitle;
 	}
 
 	/* 记录购物车总价和总件数 */

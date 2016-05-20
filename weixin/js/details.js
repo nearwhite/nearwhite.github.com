@@ -24,7 +24,11 @@
 		cdata: false, // 当前商品数据
 		isExist: false // 购物车是否存在此商品
 	};
-
+	if (!nw.id) {
+		alert("找不到商品[ID]，即将返回首页!");
+		window.location.href = "index.html";
+		return;
+	}
 	//  判断是否有存储数据
 	if (amstore.get(nw.storeKey)) {
 		nw.storeVal = amstore.get(nw.storeKey);
@@ -149,9 +153,9 @@
 				// 判断件数是否小于或等于0 并存储在本地，是就删除
 				if (addNumber <= 0) {
 					if (typeof nw.id != "undefined") {
-						for(var i=0,j=nw.storeVal.items.length; i<j; i++){
-							if(nw.id == nw.storeVal.items[i].id){
-								nw.storeVal.items.splice(i, 1);  
+						for (var i = 0, j = nw.storeVal.items.length; i < j; i++) {
+							if (nw.id == nw.storeVal.items[i].id) {
+								nw.storeVal.items.splice(i, 1);
 							}
 						}
 						_data.cartPrice = nw.storeVal.cartPrice = "0.00";

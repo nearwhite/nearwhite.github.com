@@ -283,7 +283,7 @@
 					return paramCell[1];
 				}
 			}
-			return new String();
+			return false;
 		},
 		getRandom: function(min, max) {
 			/**

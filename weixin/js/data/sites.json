@@ -1,0 +1,19 @@
+[
+	{
+		"name": "小八",
+		"province": "北京",
+		"city": "北京市",
+		"district": "朝阳区",
+		"houseaddress": "三里屯SOHO公寓17#2203",
+		"postcode": "100000",
+		"phone": "13701378834"
+	}, {
+		"name": "圣菜",
+		"province": "北京",
+		"city": "北京市",
+		"district": "昌平区",
+		"houseaddress": "燕城苑",
+		"postcode": "100000",
+		"phone": "13701378834"
+	}
+]

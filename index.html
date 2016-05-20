@@ -17,10 +17,58 @@
 				height: 150px;
 				max-width: 100%;
 			}
+			
+			body{overflow: hidden;margin: 0;height: 100vh;perspective: 65em;perspective-origin: 50% calc(50% - 25em);}
+			.assembly,.assembly div{position: absolute;top: 50%;left: 50%;transform-style: preserve-3d;}
+			.assembly{transform: rotateY(50deg) translate3d(0, -10em, 5em);animation: move 8s linear infinite;}
+			@keyframes move{to{transform: rotateY(-30deg) translate3d(0, 5em, 0);}}.bar{transform-origin: 0 2.5em 0;animation: grow 8s cubic-bezier(0.19, 1, 0.23, 1) infinite;}
+			.bar:nth-child(1){margin-left: -15em;transform: scaleY(1);color: #7ed6be;}
+			.bar:nth-child(2){margin-left: -7.5em;transform: scaleY(2);color: #ecf081;}
+			.bar:nth-child(3){margin-left: 0em;transform: scaleY(2.3);color: #ffbe40;}
+			.bar:nth-child(4){margin-left: 7.5em;transform: scaleY(2.5);color: #ef746f;}
+			.bar:nth-child(5){margin-left: 15em;transform: scaleY(2.9);color: #bc8696;}
+			@keyframes grow{0%{transform: scaleY(0);}}.face{margin: -2.5em;width: 5em;height: 5em;backface-visibility: hidden;background: currentColor;}
+			.face:nth-child(n + 2):before{position: absolute;top: 100%;left: 0;width: inherit;height: inherit;opacity: .1;background: inherit;content: '';}
+			.face:nth-child(1){transform: rotate3d(1, 0, 0, 90deg) translateZ(2.5em);-webkit-filter: brightness(0.7);filter: brightness(0.7);}
+			.face:nth-child(2){transform: rotate3d(0, 1, 0, -90deg) translateZ(2.5em);-webkit-filter: brightness(1);filter: brightness(1);}
+			.face:nth-child(3){transform: rotate3d(0, 1, 0, 0deg) translateZ(2.5em);-webkit-filter: brightness(0.85);filter: brightness(0.85);}
+			.face:nth-child(4){transform: rotate3d(0, 1, 0, 90deg) translateZ(2.5em);-webkit-filter: brightness(0.55);filter: brightness(0.55);}
 		</style>
 	</head>
 
 	<body>
+		<div class='assembly'>
+			<div class='bar'>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+			</div>
+			<div class='bar'>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+			</div>
+			<div class='bar'>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+			</div>
+			<div class='bar'>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+			</div>
+			<div class='bar'>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+				<div class='face'></div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="row" id="app" v-cloak>
 				<div class="text-center">
@@ -28,7 +76,7 @@
 				</div>
 				<hr />
 				<ul class="list-unstyled text-center clearfix" id="demowall">
-					<li v-for="item in items" class="col-sm-6">
+					<li v-for="item in items" class="col-xs-6 col-sm-4 col-md-3">
 						<a href="{{item.url}}">
 							<img :src="item.imgSrc" />
 							<h3 v-text="item.name | checkText"></h3>
@@ -49,25 +97,31 @@
 				data: {
 					title: "白衬衫",
 					items: [{
-						name: "排版一",
+						name: "白衬衫商城",
+						imgSrc: "build/img/logo/logo-null-min.png",
+						url: "weixin/index.html"
+					}, {
+						name: "首页排版一",
 						imgSrc: "build/img/logo/logo-min.png",
 						url: "homeOne/index.html"
 					}, {
-						name: "排版二",
+						name: "首页排版二",
 						imgSrc: "build/img/logo/logo-min.png",
 						url: "homeTwo/index.html"
 					}, {
-						name: "排版三",
+						name: "首页排版三",
 						imgSrc: "build/img/logo/logo-min.png",
 						url: "homeThree/index.html"
 					}, {
-						name: "排版三[动画版]",
+						name: "首页排版三[动画版]",
 						imgSrc: "build/img/logo/logo-min.png",
 						url: "homeThree/index_animate.html"
 					}]
 				}
 			})
 		</script>
+
+		<!--<script src="build/js/canvas.js" type="text/javascript" charset="utf-8"></script>-->
 	</body>
 
 </html>

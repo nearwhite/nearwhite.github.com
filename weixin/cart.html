@@ -35,7 +35,7 @@
 												<span class="tip-img tip-plus"></span>
 											</div>
 											<div class="am-fr cart-number">
-												<input disabled class="clothes-number" type="number" v-model="size.number" data-am-popover="{content: '库存不足'}" />
+												<input readonly class="clothes-number" type="text" v-model="size.number" data-am-popover="{content: '库存不足'}" />
 											</div>
 											<div class="am-fr cart-minus" v-on:click="minus(index,sizeIndex)">
 												<span class="tip-img tip-minus"></span>
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 
-				<div class="cart-footer">
+				<div class="am-u-sm-12 am-margin-bottom-sm">
 					<template v-if="cartNumber == 0">
 						<a href="index.html" class="am-text-white">
 							<button type="button" class="am-btn am-btn-black am-btn-block">
@@ -96,7 +96,7 @@
 		<script type="text/javascript">
 			var requireJs = ["cart"];
 		</script>
-		<script src="//libs.cdnjs.net/require.js/2.1.11/require.min.js" data-main="js/main" type="text/javascript" charset="utf-8"></script>
+		<script src="js/plugs/require.min.js" data-main="js/main"></script>
 	</body>
 
 </html>

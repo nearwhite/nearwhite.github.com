@@ -7,14 +7,13 @@
  * */
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["jquery", "Vue", "gsJsPlugs", "amazeui"], factory);
+		define(["jquery", "vue", "gsJsPlugs", "amazeui"], factory);
 	} else if (typeof exports === "object") {
-		module.exports = factory(require("jquery"), require("Vue"), require("gs"), require("amazeui"));
+		module.exports = factory(require("jquery"), require("vue"), require("gs"), require("amazeui"));
 	} else {
 		factory(root.jQuery);
 	}
 }(this, function($, Vue, gs) {
-	Vue.config.debug = true;
 	// 数组求和函数
 	var amstore = $.AMUI.store;
 	var nw = {
@@ -88,7 +87,7 @@
 					if (itemData.totalNumber == 0) {
 						itemData.buttonTitle = itemData.sizes[0].sizeTitle;
 					} else {
-						itemData.buttonTitle = itemData.totalPrice;
+						itemData.buttonTitle = "￥" + itemData.totalPrice;
 					}
 
 					// 修改过购物车衣服总件数和总价

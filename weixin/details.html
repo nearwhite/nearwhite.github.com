@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>白衬衫限量版</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -82,12 +83,11 @@
 								</li>
 							</ul>
 						</div>
-					
 					</div>
 					<div class="swiper-pagination">
 					</div>
 				</div>
-				
+
 				<!-- 设计师寄语等弹窗 -->
 				<div class="d-model am-hide">
 					<div class="am-vertical-align d-model-content">
@@ -95,7 +95,7 @@
 					</div>
 					<a href="javascript:void(0)" class="am-icon-btn am-icon-remove d-model-remove"></a>
 				</div>
-				
+
 				<div class="details-money"><strong>￥100</strong></div>
 			</div>
 
@@ -111,24 +111,20 @@
 						<li v-for="(index, size) in sizes">
 							<a href="javascript:;">{{size.sizeTitle}}</a>
 							<div class="clothes-change-box am-cf">
-								<div class="am-fr details-plus" v-on:click="add(index,$event)" >
+								<div class="am-fr details-plus" data-index="{{index}}" v-on:click="add(index,$event)">
 									<span class="tip-img tip-plus"></span>
 								</div>
 								<div class="am-fr details-number" v-bind:class="{'am-hide': !size.sizeProvisionalNumber}">
-									<input disabled class="clothes-number" type="number" v-model="size.sizeProvisionalNumber" data-am-popover="{content: '库存不足'}" />
+									<input readonly class="clothes-number" type="text" v-model="size.sizeProvisionalNumber" data-am-popover="{content: '库存不足'}" />
 								</div>
-								<div class="am-fr details-minus" v-on:click="minus(index)" v-bind:class="{'am-hide': !size.sizeProvisionalNumber}">
+								<div class="am-fr details-minus" data-index="{{index}}" v-on:click="minus(index)" v-bind:class="{'am-hide': !size.sizeProvisionalNumber}">
 									<span class="tip-img tip-minus"></span>
 								</div>
-								<!--<span class="tip-img tip-minus clothes-minus" v-bind:class="{'am-hide': !size.sizeProvisionalNumber}" v-on:click="minus(index)"></span>
-								<input disabled class="clothes-number" type="number" v-model="size.sizeProvisionalNumber" data-am-popover="{content: '库存不足'}" v-bind:class="{'am-hide': !size.sizeProvisionalNumber}" />
-								<span v-on:click="add(index,$event)" class="tip-img tip-plus clothes-jia"></span>-->
 							</div>
 						</li>
 					</ul>
 				</div>
 			</div>
-
 		</div>
 
 		<!-- 底部 -->
@@ -138,7 +134,7 @@
 					<i class="tip-img tip-yijia"></i>
 				</a>
 			</div>
-			<div class="footer-shopping-basket" v-bind:class="{'have': cartNumber}">
+			<div class="footer-shopping-basket" v-bind:class="{'have': cartNumber}" style="top: -66px;">
 				<a href="cart.html">
 					<i class="tip-img tip-gouwudai"></i>
 				</a>
@@ -152,7 +148,7 @@
 		<script type="text/javascript">
 			var requireJs = ["details"];
 		</script>
-		<script src="//libs.cdnjs.net/require.js/2.1.11/require.min.js" data-main="js/main" type="text/javascript" charset="utf-8"></script>
+		<script src="js/plugs/require.min.js" data-main="js/main"></script>
 	</body>
 
 </html>

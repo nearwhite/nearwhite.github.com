@@ -1,38 +1,36 @@
 {
-    "cartPrice": "300.00",
-    "cartNumber": 3,
+    "cartPrice": "200.00",
+    "cartNumber": 2,
     "items": [
         {
             "id": "1",
-            "totalNumber": 2,
-            "totalPrice": "200.00",
             "sizes": [
                 {
-                    "number": 1,
-                    "sizeProvisionalNumber": 1,
                     "storeNumber": 2,
                     "sizeTitle": "XS(160/80A)",
-                    "totalPrice": "100.00"
-                },
-                {
-                    "number": 1,
-                    "sizeProvisionalNumber": 1,
-                    "storeNumber": 3,
-                    "sizeTitle": "S (165/84A)",
-                    "totalPrice": "100.00"
-                },
-                {
-                    "number": 0,
                     "sizeProvisionalNumber": 0,
-                    "storeNumber": 4,
-                    "sizeTitle": "M (170/88A)",
+                    "number": 0,
                     "totalPrice": "0.00"
                 },
                 {
-                    "number": 0,
+                    "storeNumber": 3,
+                    "sizeTitle": "S (165/84A)",
+                    "sizeProvisionalNumber": 1,
+                    "number": 1,
+                    "totalPrice": "100.00"
+                },
+                {
+                    "storeNumber": 4,
+                    "sizeTitle": "M (170/88A)",
                     "sizeProvisionalNumber": 0,
+                    "number": 0,
+                    "totalPrice": "0.00"
+                },
+                {
                     "storeNumber": 5,
                     "sizeTitle": "L (175/96A)",
+                    "sizeProvisionalNumber": 0,
+                    "number": 0,
                     "totalPrice": "0.00"
                 }
             ],
@@ -43,43 +41,43 @@
                 "img/img4.jpg",
                 "img/img5.jpg"
             ],
-            "buttonTitle": "￥200.00",
             "price": "100.00",
             "title": "白衬衫限量版",
+            "totalNumber": 1,
+            "buttonTitle": "￥100.00",
             "cartNumber": 2,
-            "cartPrice": "200.00"
+            "cartPrice": "200.00",
+            "totalPrice": "100.00"
         },
         {
-            "id": "2",
-            "totalNumber": 1,
-            "totalPrice": "100.00",
+            "id": "3",
             "sizes": [
                 {
-                    "number": 1,
-                    "sizeProvisionalNumber": 1,
                     "storeNumber": 2,
                     "sizeTitle": "XS(160/80A)",
+                    "sizeProvisionalNumber": 1,
+                    "number": 1,
                     "totalPrice": "100.00"
                 },
                 {
-                    "number": 0,
-                    "sizeProvisionalNumber": 0,
                     "storeNumber": 3,
                     "sizeTitle": "S (165/84A)",
+                    "sizeProvisionalNumber": 0,
+                    "number": 0,
                     "totalPrice": "0.00"
                 },
                 {
-                    "number": 0,
-                    "sizeProvisionalNumber": 0,
                     "storeNumber": 4,
                     "sizeTitle": "M (170/88A)",
+                    "sizeProvisionalNumber": 0,
+                    "number": 0,
                     "totalPrice": "0.00"
                 },
                 {
-                    "number": 0,
-                    "sizeProvisionalNumber": 0,
                     "storeNumber": 5,
                     "sizeTitle": "L (175/96A)",
+                    "sizeProvisionalNumber": 0,
+                    "number": 0,
                     "totalPrice": "0.00"
                 }
             ],
@@ -90,11 +88,13 @@
                 "img/img4.jpg",
                 "img/img5.jpg"
             ],
-            "buttonTitle": "￥100.00",
             "price": "100.00",
             "title": "白衬衫限量版",
-            "cartNumber": 3,
-            "cartPrice": "300.00"
+            "totalNumber": 1,
+            "buttonTitle": "￥100.00",
+            "cartNumber": 1,
+            "cartPrice": "100.00",
+            "totalPrice": "100.00"
         }
     ]
 }

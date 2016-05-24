@@ -7,14 +7,13 @@
  * */
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["jquery", "Vue", "gsJsPlugs", "amazeui"], factory);
+		define(["jquery", "vue", "gsJsPlugs", "amazeui"], factory);
 	} else if (typeof exports === "object") {
-		module.exports = factory(require("jquery"), require("Vue"), require("gsJsPlugs"), require("amazeui"));
+		module.exports = factory(require("jquery"), require("vue"), require("gsJsPlugs"), require("amazeui"));
 	} else {
 		factory(root.jQuery);
 	}
 }(this, function($, Vue, gs) {
-	Vue.config.debug = true;
 	$(function() {
 		var cdata = {
 			"totalPrice": "600.00", // 金额
@@ -51,7 +50,7 @@
 				});
 			}
 			$paySiteModel.modal();
-			
+
 			(function() {
 				$.AMUI.validator.patterns.mobile = /^1((3|5|8){1}\d{1}|70|77)\d{8}$/;
 				var $form = $('#add-site-form');
@@ -62,20 +61,19 @@
 						var formValidity = this.isFormValid();
 						if (formValidity) {
 							var $inputDisabled = $form.find(".area-code,.district");
-							$inputDisabled.prop("disabled",false);
+							$inputDisabled.prop("disabled", false);
 							//var addSiteData = decodeURIComponent($form.serialize());
 							var addSiteJson = $form.serializeArray();
-							addSiteJson.forEach(function(v){
+							addSiteJson.forEach(function(v) {
 								vueCData.$data[v.name] = v.value;
 							})
-							$inputDisabled.prop("disabled",true);
+							$inputDisabled.prop("disabled", true);
 							$paySiteModel.modal("close");
 						}
 						return false;
 					}
 				});
-				
-				
+
 				var validator = $form.data('amui.validator');
 				$form.on('focusin focusout input', '.am-form-error input', function(e) {
 					if (e.type === 'focusin') {
@@ -91,7 +89,7 @@
 					}
 				});
 			}());
-		
+
 			// 地区选择
 			var citySel = $("#city-sel");
 			require(["cityselect"], function() {　　

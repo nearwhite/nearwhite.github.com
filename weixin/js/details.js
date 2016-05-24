@@ -7,15 +7,14 @@
  * */
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["jquery", "Vue", "gsJsPlugs", "amazeui"], factory);
+		define(["jquery", "vue", "gsJsPlugs", "amazeui"], factory);
 	} else if (typeof exports === "object") {
-		module.exports = factory(require("jquery"), require("Vue"), require("gsJsPlugs"), require("amazeui"));
+		module.exports = factory(require("jquery"), require("vue"), require("gsJsPlugs"), require("amazeui"));
 	} else {
 		factory(root.jQuery);
 	}
 }(this, function($, Vue, gs) {
 	// 数组求和函数
-	Vue.config.debug = true;
 	var amstore = $.AMUI.store;
 	var nw = {
 		id: gs.getUrlParam("id"), // 获取商品id
@@ -29,6 +28,7 @@
 		window.location.href = "index.html";
 		return;
 	}
+	
 	//  判断是否有存储数据
 	if (amstore.get(nw.storeKey)) {
 		nw.storeVal = amstore.get(nw.storeKey);
@@ -48,6 +48,7 @@
 				if (itemData.id == nw.id) {
 					nw.isExist = true;
 					nw.cdata = itemData;
+					break;
 				}
 			}
 		}
@@ -56,38 +57,33 @@
 	// 如果没有数据就去读取数据
 	if (!nw.cdata) {
 		nw.cdata = {
-		    "id": "1",
-		    "sizes": [
-		        {
-		            "storeNumber": 2,
-		            "sizeTitle": "XS(160/80A)"
-		        },
-		        {
-		            "storeNumber": 3,
-		            "sizeTitle": "S (165/84A)"
-		        },
-		        {
-		            "storeNumber": 4,
-		            "sizeTitle": "M (170/88A)"
-		        },
-		        {
-		            "storeNumber": 5,
-		            "sizeTitle": "L (175/96A)"
-		        }
-		    ],
-		    "imgs": [
-		        "img/img1.jpg",
-		        "img/img2.jpg",
-		        "img/img3.jpg",
-		        "img/img4.jpg",
-		        "img/img5.jpg"
-		    ],
-		    "price": "100.00",
-		    "title": "白衬衫限量版"
+			"id": "1",
+			"sizes": [{
+				"storeNumber": 2,
+				"sizeTitle": "XS(160/80A)"
+			}, {
+				"storeNumber": 3,
+				"sizeTitle": "S (165/84A)"
+			}, {
+				"storeNumber": 4,
+				"sizeTitle": "M (170/88A)"
+			}, {
+				"storeNumber": 5,
+				"sizeTitle": "L (175/96A)"
+			}],
+			"imgs": [
+				"img/img1.jpg",
+				"img/img2.jpg",
+				"img/img3.jpg",
+				"img/img4.jpg",
+				"img/img5.jpg"
+			],
+			"price": "100.00",
+			"title": "白衬衫限量版"
 		}
 		nw.cdata.id = nw.id;
 		nw.cdata.totalNumber = nw.cdata.totalNumber = 0;
-		for(var i=0,j=nw.cdata.sizes.length; i < j;i++){
+		for (var i = 0, j = nw.cdata.sizes.length; i < j; i++) {
 			var size = nw.cdata.sizes[i];
 			size.number = size.sizeProvisionalNumber = 0;
 			size.totalPrice = "0.00";
@@ -140,13 +136,16 @@
 				// 判断件数是否小于或等于0 并存储在本地，是就删除
 				if (addNumber <= 0) {
 					if (typeof nw.id != "undefined") {
+						// 删除已保存的数据
 						for (var i = 0, j = nw.storeVal.items.length; i < j; i++) {
 							if (nw.id == nw.storeVal.items[i].id) {
 								nw.storeVal.items.splice(i, 1);
+								break;
 							}
 						}
+						// 初始化数据
 						_data.cartPrice = nw.storeVal.cartPrice = "0.00";
-						_data.cartNumber = nw.storeVal.cartNumber = addNumber;
+						_data.cartNumber = nw.storeVal.cartNumber = gs.objectSum(nw.storeVal.items, "totalNumber");;
 						_data.buttonTitle = _data.sizes[0].sizeTitle;
 						nw.isExist = false;
 						amstore.set(nw.storeKey, nw.storeVal);
@@ -156,7 +155,7 @@
 				} else {
 					_data.totalNumber = addNumber;
 					_data.totalPrice = gs.retainTwoNumber(gs.accMul(_data.totalNumber, _data.price));
-					_data.buttonTitle = "￥" + this.totalPrice;
+					_data.buttonTitle = "￥" + _data.totalPrice;
 					if (nw.isExist) {
 						for (var item = 0, items = nw.storeVal.items.length; item < items; item++) {
 							var itemData = nw.storeVal.items[item];
@@ -181,20 +180,27 @@
 
 	/* DOM 操作  */
 	var $commodityChange = $("#commodity-change");
-	var _dropdownBg = document.getElementById("dropdown-bg");
+	var $dropdownBg = $("#dropdown-bg");
 	/* 上拉框监控事件  */
 	$commodityChange.on("open.dropdown.amui", function() {
-		_dropdownBg.classList.add("am-active");
+		$dropdownBg.addClass("am-active");
 		$commodityChange.find(".clothes-change-ok").removeClass("am-hide");
 	}).on("closed.dropdown.amui", function() {
-		_dropdownBg.classList.remove("am-active");
-		$commodityChange.find(".clothes-change-ok").addClass("am-hide");
-		if (vueCData) {
-			var sizes = vueCData.$data.sizes;
-			for (var i = 0, j = sizes.length; i < j; i++) {
-				sizes[i].sizeProvisionalNumber = sizes[i].number;
+		if ($dropdownBg.hasClass("am-active")) {
+			$commodityChange.find(".clothes-change-ok").addClass("am-hide");
+			if (vueCData) {
+				var sizes = vueCData.$data.sizes;
+				for (var i = 0, j = sizes.length; i < j; i++) {
+					sizes[i].sizeProvisionalNumber = sizes[i].number;
+				}
 			}
+			$dropdownBg.removeClass("am-active");
 		}
+	});
+	
+	$dropdownBg.click(function() {
+		// iphone 点击蒙版时不触发下拉组件关闭事件
+		$commodityChange.dropdown('close');
 	});
 
 	require(["swiper"], function(Swiper) {
@@ -210,11 +216,9 @@
 			onInit: function(swiper) {
 				var $dSwiper = $("#details-swiper");
 				var $swiperSlide = $dSwiper.find("div.swiper-slide");
-				var $swiperPage = $dSwiper.find("div.swiper-pagination");
 				var $detailsInfoList = $("#details-info-list");
 				$detailsInfoList.css("margin-top", ($dSwiper.height() - $detailsInfoList.height()) / 2);
 				$swiperSlide.css("lineHeight", $swiperSlide.height() + "px"); // 详情图片上下居中
-				$swiperPage.find("span:last-child").append('<i class="am-icon-bars"></i>');
 			},
 			onSlideChangeStart: function(swiper) {
 				// 滑动一次判断是否到达底部

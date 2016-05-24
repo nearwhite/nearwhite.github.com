@@ -9,11 +9,14 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 
-	<body class="bg">
+	<body>
 		<!-- 页面内容 -->
 		<div id="main">
 			<!-- 轮播 -->
-			<div id="nw-home-slider" class="am-slider am-slider-a5 am-slider-default" data-am-flexslider="{animationLoop:false}">
+			<div id="nw-home-slider" class="am-slider am-slider-a5 am-slider-default">
+				<div class="nw-home-slider-bg">
+					<img class="am-img-responsive" src="img/banner_1.jpg"/>
+				</div>
 				<ul class="am-slides">
 					<li>
 						<a href="details.html?id=1">
@@ -25,115 +28,80 @@
 							<img class="am-img-responsive" src="img/banner_2.jpg">
 						</a>
 					</li>
-					<li>
-						<a href="details.html?id=3">
-							<img class="am-img-responsive" src="img/banner_3.jpg">
-						</a>
-					</li>
-					<li>
-						<a href="details.html?id=4">
-							<img class="am-img-responsive" src="img/banner_4.jpg">
-						</a>
-					</li>
 				</ul>
 			</div>
 
 			<!-- 商品展示 -->
 			<div class="am-g" id="nw-commodity-show">
-				<div class="am-u-sm-12 nw-image-show">
-					<p class="nw-more-title"><em></em><span>永恒经典</span></p>
-					<a href="details.html?id=5">
-						<img class="am-img-responsive" src="img/banner_1.jpg" />
-					</a>
-					<ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-gallery-overlay am-no-layout">
-						<li>
-							<div class="am-gallery-item">
-								<a href="details.html?id=6">
-									<img src="img/load_2.jpg" data-original="img/img1.jpg">
+				<div class="am-cf jingdian-box">
+					<div class="am-margin-vertical-sm classify-title">
+						<h1>经典款</h1>
+					</div>
+					<div class="am-u-sm-12">
+						<ul class="am-list classic-list">
+							<li>
+								<a href="details.html?id=3">
+									<img class="am-img-responsive" src="img/jingdian_1.jpg">
 								</a>
-							</div>
-						</li>
-						<li>
-							<div class="am-gallery-item">
-								<a href="details.html?id=7">
-									<img src="img/load_2.jpg" data-original="img/img2.jpg">
+							</li>
+							<li>
+								<a href="details.html?id=4">
+									<img class="am-img-responsive" src="img/jingdian_2.jpg">
 								</a>
-							</div>
-						</li>
-						<li>
-							<div class="am-gallery-item">
-								<a href="details.html?id=8">
-									<img src="img/load_2.jpg" data-original="img/img3.jpg">
-								</a>
-							</div>
-						</li>
-						<li>
-							<div class="am-gallery-item">
-								<a href="details.html?id=9">
-									<img src="img/load_2.jpg" data-original="img/img4.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=10">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=11">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=12">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=13">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=14">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-						<li class="am-hide">
-							<div class="am-gallery-item">
-								<a href="details.html?id=15">
-									<img src="img/load_2.jpg" data-original="img/img5.jpg">
-								</a>
-							</div>
-						</li>
-					</ul>
-					<p class="am-margin-0 am-text-center">
-						<button type="button" class="am-btn am-btn-default am-btn-block nw-image-show-max">
-							<span class="am-icon-angle-double-down am-text-lg"></span> 
-						</button>
-					</p>
+							</li>
+						</ul>
+					</div>
 				</div>
 
+				<div class="am-cf zhongchou-box">
+					<div class="am-margin-vertical-sm classify-title">
+						<h1>众筹款</h1></div>
+					<div class="am-u-sm-12">
+						<div class="zhongchou-list am-cf">
+							<a href="##" class="am-text-black">
+								<div class="zc-img-one flip-container">
+									<img class="am-img-responsive" src="img/img2.jpg" />
+								</div>
+								<div class="zc-img-two">
+									<img class="am-img-responsive" src="img/img2.jpg" />
+									<div class="zhongchou">
+										<div class="zhongchou-bg"></div>
+										<div class="zhongchou-content">
+											<span>NEARWHITE</span>
+											<h2>马卡龙之恋</h2>
+											<div class="circliful" data-info="60%" data-percent="60"></div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="zhongchou-list am-cf">
+							<a href="##" class="am-text-black">
+								<div class="zc-img-one flip-container">
+									<img class="am-img-responsive" src="img/img2.jpg" />
+								</div>
+								<div class="zc-img-two">
+									<img class="am-img-responsive" src="img/img2.jpg" />
+									<div class="zhongchou">
+										<div class="zhongchou-bg"></div>
+										<div class="zhongchou-content">
+											<span>NEARWHITE</span>
+											<h2>马卡龙之恋</h2>
+											<div class="circliful" data-info="50%" data-percent="50"></div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 		<!-- 底部 -->
 		<footer id="nw-footer">
-			<div class="footer-round">
-				<a href="order.html">
-					<i class="am-icon-list-alt am-text-xl"></i>
-				</a>
+			<div class="footer-home">
+				<img class="am-img-responsive" src="img/home.png" />
 			</div>
 			<div class="footer-shopping-basket">
 				<a href="cart.html">
@@ -142,23 +110,11 @@
 				<span class="basket-icon"></span>
 			</div>
 		</footer>
-		
-		<!-- 备案信息 -->
-		<footer data-am-widget="footer" class="am-footer am-footer-default">
-			<div class="am-footer-switch">
-				<span class="am-footer-ysp">NEAR WHITE</span>
-			</div>
-			<div class="am-footer-miscs ">
-				<p>CopyRight©2016 nearwhite Inc.</p>
-				<p>京ICP备12345678</p>
-			</div>
-			<div style="height: 35px;"></div>
-		</footer>
-		
+
 		<script type="text/javascript">
 			var requireJs = "index";
 		</script>
-		<script src="//libs.cdnjs.net/require.js/2.1.11/require.min.js" data-main="js/main" type="text/javascript" charset="utf-8"></script>
+		<script src="js/plugs/require.min.js" data-main="js/main"></script>
 	</body>
 
 </html>

@@ -107,7 +107,7 @@ body #nprogress{display: none;}
 /* 首页 */
 /* 轮播 */
 #nw-home-slider{min-height: 232.4px;background-color: transparent;box-shadow: 0 0 0;margin: 0;background-color: #F3F3F3;}
-#nw-home-slider .nw-home-slider-bg{position: absolute;top: 0;left: 0;z-index: -1;}
+#nw-home-slider .nw-home-slider-bg{position: absolute;top: 0;left: 0;}
 #nw-home-slider.am-slider-a5 .am-control-nav li a,
 #nw-home-slider.am-slider-a5 .am-control-nav{height: 3px}
 #nw-home-slider.am-slider-a5 .am-control-nav li a.am-active{background: #e60012;box-shadow:0 0 0;}

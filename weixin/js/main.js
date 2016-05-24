@@ -1,12 +1,16 @@
 /*入口脚本*/
 require.config({
 	paths: {
-		"amazeui": "http://cdn.amazeui.org/amazeui/2.6.2/js/amazeui.min",
-		"jquery": "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min",
-		"lazyload": "http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min",
-		"vue": "http://apps.bdimg.com/libs/vue/1.0.14/vue.min",
-		"swiper": "plugs/swiper-3.3.1.jquery.min",
+		"amazeui" : "http://cdn.amazeui.org/amazeui/2.6.2/js/amazeui.min",
+		"jquery" : "http://libs.cdnjs.net/jquery/2.1.4/jquery.min",
+		"vue" : "http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min",
+		"lazyload" : "http://libs.cdnjs.net/jquery.lazyload/1.9.1/jquery.lazyload.min",
+//		"jquery": "plugs/jquery.min",
+//		"amazeui": "plugs/amazeui.min",
+//		"vue": "plugs/vue.min",
+//		"lazyload": "plugs/jquery.lazyload.min",
 		"circliful": "plugs/jquery.circliful.min",
+		"swiper": "plugs/swiper-3.3.1.jquery.min",
 		"gsJsPlugs": "plugs/gsJsPlugs.min",
 		"details": "details",
 		"cart": "cart"
@@ -29,7 +33,9 @@ require(["jquery", "amazeui"], function($) {
 		$slider.css("min-height", $slider.children("div.nw-home-slider-bg").height());
 		$slider.flexslider({
 			animationLoop: false,
-			start: function() {}
+			start: function() {
+				$slider.children("div.nw-home-slider-bg").hide();
+			}
 		});
 		// 获取购物车数据
 		var nwFooter = $("#nw-footer");

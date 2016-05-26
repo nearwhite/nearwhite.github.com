@@ -80,10 +80,12 @@
 						e.play();
 						if(!iosAgent){
 							e.loop = true;
+						}else{
+							e.addEventListener("ended", function() {
+								e.play();
+							}, !1)
 						}
-						e.addEventListener("ended", function() {
-							e.play();
-						}, !1)
+						
 					}
 				})
 			}

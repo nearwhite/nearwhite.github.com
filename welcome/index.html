@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -52,12 +53,14 @@
 				</div>
 			</div>
 		</section>
-		<section class="bottom"><img class="qcode" src="img/qcode.png"><br><img class="qcode_text" src="img/qcode_text.png"><br><img src="img/bottom.png" width="300px"></section><audio preload loop><source src="music.mp3" type="audio/mp3"></source></audio>
+		<section class="bottom"><img class="qcode" src="img/qcode.png"><br><img class="qcode_text" src="img/qcode_text.png"><br><img src="img/bottom.png" width="300px"></section><audio preload><source src="music.mp3" type="audio/mp3"></source></audio>
 		<script src="swiper.min.js" type="text/javascript"
 			charset="utf-8"></script>
 		<script>
 			function initHtml() {
 				var e = document.getElementsByTagName("audio")[0];
+				var iosAgent = getUserAgent().ios;
+				console.log(iosAgent);
 				new Swiper("#swiper", {
 					effect: "cube",
 					loop: !0,
@@ -74,7 +77,11 @@
 					autoplay: 3250,
 					onInit: function() {
 						for (var t = document.querySelectorAll("img"), i = 0, n = t.length; n > i; i++) t[i].classList.remove("visibility");
-						e.play(), e.addEventListener("ended", function() {
+						e.play();
+						if(!iosAgent){
+							e.loop = true;
+						}
+						e.addEventListener("ended", function() {
 							e.play();
 						}, !1)
 					}
@@ -84,6 +91,18 @@
 			"complete" == document.readyState && (init = !0, initHtml()), window.onload = function() {
 				init || initHtml()
 			};
+			
+			
+			/* 获取设备系统  */
+			function getUserAgent() {
+				var u = navigator.userAgent;
+				var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+				var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+				return {
+					"android": isAndroid,
+					"ios": isiOS
+				}
+			}
 		</script>
 	</body>
 

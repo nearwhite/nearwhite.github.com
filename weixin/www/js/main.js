@@ -1,10 +1,11 @@
 /*入口脚本*/
 require.config({
-	paths: {
+	paths: { // -- 配置别名
 		"amazeui" : "http://cdn.amazeui.org/amazeui/2.6.2/js/amazeui.min",
 		"jquery" : "http://libs.cdnjs.net/jquery/2.1.4/jquery.min",
 		"vue" : "http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min",
 		"lazyload" : "http://libs.cdnjs.net/jquery.lazyload/1.9.1/jquery.lazyload.min",
+		"fastclick" : "http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min",
 //		"jquery": "plugs/jquery.min",
 //		"amazeui": "plugs/amazeui.min",
 //		"vue": "plugs/vue.min",
@@ -18,6 +19,9 @@ require.config({
 });
 require(["jquery", "amazeui"], function($) {
 	$(function() {
+		require(["fastclick"],function(attachFastClick){
+			attachFastClick.attach(document.body);
+		})
 		if (typeof requireJs == "string") {
 			if (requireJs) {
 				indexInit();
@@ -29,14 +33,19 @@ require(["jquery", "amazeui"], function($) {
 
 	// 首页初始化
 	function indexInit() {
-		var $slider = $("#nw-home-slider");
-		$slider.css("min-height", $slider.children("div.nw-home-slider-bg").height());
-		$slider.flexslider({
-			animationLoop: false,
-			start: function() {
-				$slider.children("div.nw-home-slider-bg").hide();
-			}
+		require(["swiper"], function(Swiper) {
+			var $homeSwiper = $("#nw-home-swiper");
+			var $swiperPage = $homeSwiper.children("ol.swiper-pagination");
+			new Swiper($homeSwiper, {
+		        pagination: '.swiper-pagination',
+		        paginationClickable: true,
+		        paginationElement : 'li',
+		        speed:400,
+		        resistanceRatio : 0
+		    });
 		});
+		
+		
 		// 获取购物车数据
 		var nwFooter = $("#nw-footer");
 		var nwStoreVal = $.AMUI.store.get("nw_store");
@@ -45,7 +54,6 @@ require(["jquery", "amazeui"], function($) {
 				nwFooter.find("div.footer-shopping-basket").addClass("have").children("span.basket-icon").text(nwStoreVal.cartNumber);
 			}
 		}
-
 		require(["lazyload"], function() {
 			var $window = $(window);
 			var _windowH = $window.height();
@@ -54,7 +62,7 @@ require(["jquery", "amazeui"], function($) {
 			var $zc = $commodity.find("div.zhongchou-box");
 			var _zcH = $zc.offset().top;
 			var _isScrollZc = false;
-			$lazyImg.lazyload();
+			$lazyImg.lazyload({threshold : 600});
 			$window.on("scroll", function() {
 				if (($window.scrollTop() + _windowH) > _zcH && !_isScrollZc) {
 					_isScrollZc = true;
@@ -62,7 +70,7 @@ require(["jquery", "amazeui"], function($) {
 						$zc.find("div.circliful").circliful({
 							dimension: 100, // 圆形宽高
 							width: 5, // 厚度
-							animationStep: 0.6, // 动画速度
+							animationStep: 1, // 动画速度
 							text: "众筹中", // 文本
 							fgcolor: "#FFCC33", // 前景颜色
 							bgcolor: "#999999" // 背景颜色
@@ -70,6 +78,7 @@ require(["jquery", "amazeui"], function($) {
 					});
 				}
 			});
+			$window.trigger("scroll");
 		});
 	}
 });

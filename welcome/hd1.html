@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -18,24 +17,112 @@
 		<link rel="shortcut icon" href="http://www.swiper.com.cn/templets/default/images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="swiper.min.css">
 		<style type="text/css">
-			html{font-size: 16px;height: 100%;-webkit-text-size-adjust: none}
-			body,h1,h2,h3,ul,li,p{margin: 0;padding: 0;font-size: 16px;font-weight: 400}
-			a{-webkit-tap-highlight-color: transparent;color: #000;text-decoration: none}
-			img{vertical-align: top}
-			ul,li{list-style: none}
-			body{font-family: Helvetica;height: 100%;color: #000;background: #F5F5F5}
-			table,tr,td{border-collapse: collapse;border-spacing: 0}
-			html,body{width: 100%}
-			img{-webkit-box-sizing: border-box;box-sizing: border-box;vertical-align: middle;border: 0}
-			section.top{text-align: center;padding: 25px 0}
-			section.bottom{text-align: center;padding-bottom: 12.5px}
-			section.bottom img.qcode{padding: 20px 0 0;width: 52px}
-			section.bottom img.qcode_text{padding: 4px 0 10px;width: 80px}
-			.swiper-wrapper{width: 80px;margin: auto}
-			.swiper-slide{text-align: center;margin: auto}
-			.swiper-wrapper img{width: 100%}
-			.visibility{visibility: hidden}
-			.index_title{position: absolute;top: 0;left: 0;width: 0;height: 0;text-indent: -9999px}
+			html {
+				font-size: 16px;
+				height: 100%;
+				-webkit-text-size-adjust: none
+			}
+			
+			body,
+			h1,
+			h2,
+			h3,
+			ul,
+			li,
+			p {
+				margin: 0;
+				padding: 0;
+				font-size: 16px;
+				font-weight: 400
+			}
+			
+			a {
+				-webkit-tap-highlight-color: transparent;
+				color: #000;
+				text-decoration: none
+			}
+			
+			img {
+				vertical-align: top
+			}
+			
+			ul,
+			li {
+				list-style: none
+			}
+			
+			body {
+				font-family: Helvetica;
+				height: 100%;
+				color: #000;
+				background: #F5F5F5
+			}
+			
+			table,
+			tr,
+			td {
+				border-collapse: collapse;
+				border-spacing: 0
+			}
+			
+			html,
+			body {
+				width: 100%
+			}
+			
+			img {
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				vertical-align: middle;
+				border: 0
+			}
+			
+			section.top {
+				text-align: center;
+				padding: 25px 0
+			}
+			
+			section.bottom {
+				text-align: center;
+				padding-bottom: 12.5px
+			}
+			
+			section.bottom img.qcode {
+				padding: 20px 0 0;
+				width: 52px
+			}
+			
+			section.bottom img.qcode_text {
+				padding: 4px 0 10px;
+				width: 80px
+			}
+			
+			.swiper-wrapper {
+				width: 80px;
+				margin: auto
+			}
+			
+			.swiper-slide {
+				text-align: center;
+				margin: auto
+			}
+			
+			.swiper-wrapper img {
+				width: 100%
+			}
+			
+			.visibility {
+				visibility: hidden
+			}
+			
+			.index_title {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+				text-indent: -9999px
+			}
 		</style>
 	</head>
 
@@ -53,14 +140,23 @@
 				</div>
 			</div>
 		</section>
-		<section class="bottom"><img class="qcode" src="img/qcode.png"><br><img class="qcode_text" src="img/qcode_text.png"><br><img src="img/bottom.png" width="300px"></section><audio preload><source src="music.mp3" type="audio/mp3"></source></audio>
-		<script src="swiper.min.js" type="text/javascript"
-			charset="utf-8"></script>
+		<section class="bottom">
+			<img class="qcode" src="img/qcode.png"><br>
+		<img class="qcode_text" src="img/qcode_text.png"><br>
+		<img src="img/bottom.png" width="300px"></section>
+		<script src="swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<audio preload loop><source src="music.mp3" type="audio/mp3"></source></audio>
 		<script>
 			function initHtml() {
-				var e = document.getElementsByTagName("audio")[0];
+				var audio = document.getElementsByTagName("audio")[0];
 				var iosAgent = getUserAgent().ios;
-				console.log(iosAgent);
+				audio.play();
+				if (iosAgent) {	// ios
+					audio.addEventListener("ended", function() {
+						audio.play();
+					}, false)
+				}
 				new Swiper("#swiper", {
 					effect: "cube",
 					loop: !0,
@@ -77,31 +173,17 @@
 					autoplay: 3250,
 					onInit: function() {
 						for (var t = document.querySelectorAll("img"), i = 0, n = t.length; n > i; i++) t[i].classList.remove("visibility");
-						e.play();
-						if(!iosAgent){
-							e.loop = true;
-						}else{
-							e.addEventListener("ended", function() {
-								e.play();
-							}, !1)
-						}
-						
 					}
 				})
 			}
-			var init = !1;
-			"complete" == document.readyState && (init = !0, initHtml()), window.onload = function() {
-				init || initHtml()
+			window.onload = function() {
+				initHtml()
 			};
-			
-			
 			/* 获取设备系统  */
 			function getUserAgent() {
 				var u = navigator.userAgent;
-				var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 				var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 				return {
-					"android": isAndroid,
 					"ios": isiOS
 				}
 			}

@@ -81,7 +81,9 @@
 		isFunction: function(obj) {
 			return gs.type(obj) === "function";
 		},
-		isArray: Array.isArray,
+		isArray: function(obj){
+			return obj instanceof Array; 
+		},
 		isWindow: function(obj) {
 			return obj != null && obj === obj.window;
 		},

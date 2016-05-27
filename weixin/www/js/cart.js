@@ -39,7 +39,7 @@
 		methods: {
 			add: function(index, sizeIndex, event) {
 				var sizeData = this.$data.items[index].sizes[sizeIndex];
-				if (sizeData.number < sizeData.storeNumber) {
+				if (sizeData.number < sizeData.sizeInventoryNum) {
 					sizeData.number++;
 				} else {
 					// 大于库存时提醒
@@ -61,7 +61,6 @@
 			},
 			cart: function() {
 				amstore.set(nw.storeKey, vueCData.$data);
-				//console.info("修改后的数据：" + JSON.stringify(vueCData.$data));
 			}
 		}
 	});
@@ -84,12 +83,9 @@
 					// 修改衣服总件数和总价和按钮文本
 					itemData.totalNumber = gs.objectSum(itemData.sizes, "number");
 					itemData.totalPrice = gs.retainTwoNumber(gs.accMul(itemData.totalNumber, itemData.price));
-					if (itemData.totalNumber == 0) {
-						itemData.buttonTitle = itemData.sizes[0].sizeTitle;
-					} else {
-						itemData.buttonTitle = "￥" + itemData.totalPrice;
-					}
-
+					/*if (itemData.totalNumber == 0) {
+						$data.items.splice(item, 1);
+					}*/
 					// 修改过购物车衣服总件数和总价
 					$data.cartPrice = gs.retainTwoNumber(gs.objectSum(this.items, "totalPrice"));
 					$data.cartNumber = gs.objectSum(this.items, "totalNumber");

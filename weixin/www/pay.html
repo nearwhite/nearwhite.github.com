@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title>支付中心</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
-		<link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.7.0/css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 
@@ -14,32 +14,17 @@
 		<div id="main">
 			<div class="am-g">
 				<div class="am-u-sm-12">
-					<div class="pay-check">
-						<span><i class="tip-img tip-check"></i>成功购买!</span>
-					</div>
 					<form id="pay-form" class="pay-form am-form">
 						<ul class="am-list">
 							<li>
 								<span class="pay-input-laber"><strong>寄送地址</strong></span>
-								<!--<div class="pay-input-absolute">请选择地址</div>-->
-								<span class="pay-input-right-icon"><i class="am-icon-chevron-right"></i></span>
-								<div class="pay-input">
-									<p class="pay-user-info">
-										<span class="am-padding-right-sm">李白</span>
-										<span>13701378834</span>
-									</p>
-									<p class="pay-site-info">北京市朝阳区三里屯SOHO公寓17座2203</p>
-								</div>
-							</li>
-							<li>
-								<span class="pay-input-laber"><strong>优惠卷</strong></span>
-								<div class="pay-input-absolute">已经优惠100元</div>
+								<div class="pay-input-absolute">请选择地址</div>
 								<span class="pay-input-right-icon"><i class="am-icon-chevron-right"></i></span>
 							</li>
 							<li>
-								<span class="pay-input-laber"><strong>留言</strong></span>
+								<span class="pay-input-laber"><strong>留言</strong> <span class="am-text-xs">(150字以内)</span></span>
 								<div class="pay-input">
-									<p class="pay-site-info">需要发票</p>
+									<textarea class="pay-msg" rows="3" cols="" placeholder="需要发票或特殊需求" maxlength="150px"></textarea>
 								</div>
 							</li>
 						</ul>
@@ -80,6 +65,16 @@
 					</div>
 				</div>
 
+				<div class="total-title am-u-sm-12">
+					*完成此订单时，表示您同意付款
+				</div>
+				
+				<div class="total-footer am-u-sm-12">
+					<button type="button" class="am-btn am-btn-black am-btn-block am-text-white" v-on:click="cart()">
+				 		微信支付
+					</button>
+				</div>
+
 			</div>
 
 			<!-- 购买的商品 -->
@@ -106,9 +101,10 @@
 					</li>
 				</ul>
 			</div>
-
+			
+			
 		</div>
-		<script src="js/plugs/require.min.js" data-main="js/main"></script>
+		<!--<script src="js/plugs/require.min.js" data-main="js/main"></script>-->
 	</body>
 
 </html>

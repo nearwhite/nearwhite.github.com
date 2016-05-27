@@ -28,7 +28,7 @@
 		window.location.href = "index.html";
 		return;
 	}
-	
+
 	//  判断是否有存储数据
 	if (amstore.get(nw.storeKey)) {
 		nw.storeVal = amstore.get(nw.storeKey);
@@ -94,7 +94,8 @@
 	/* 记录购物车总价和总件数 */
 	nw.cdata.cartNumber = nw.storeVal.cartNumber;
 	nw.cdata.cartPrice = nw.storeVal.cartPrice;
-
+	
+	console.log(JSON.stringify(nw.cdata));
 	// 数据绑定
 	var vueCData = new Vue({
 		el: '#app',
@@ -197,7 +198,7 @@
 			$dropdownBg.removeClass("am-active");
 		}
 	});
-	
+
 	$dropdownBg.click(function() {
 		// iphone 点击蒙版时不触发下拉组件关闭事件
 		$commodityChange.dropdown('close');

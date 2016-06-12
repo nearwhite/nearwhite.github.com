@@ -143,7 +143,7 @@
 
 		// 初始化
 		var init = function() {
-			$addressPopup.modal();
+			$addressPopup.modal({dimmer:false});
 			if (!$this.data("selectAddress")) { // 第一次调用先渲染节点
 				provStart();
 				$this.data("selectAddress", true);
